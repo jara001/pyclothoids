@@ -7,6 +7,8 @@ from pathlib import Path
 
 from os import listdir
 from os.path import isfile, join, abspath, dirname
+# Py2: Support 'encoding' keyword argument.
+from io import open
 
 __version__ = '0.1.5'
 
@@ -122,14 +124,14 @@ setup(
     version=__version__,
     author='Phillip Dix',
     author_email='phildix11@gmail.com',
-    url='https://github.com/phillipd94/PyClothoids',
-    description='A library for clothoid curves in Python',
+    url='https://github.com/jara001/pyclothoids',
+    description='Py2 library for clothoid curves in Python',
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages = ['pyclothoids'],
     ext_modules=extensions,
-    install_requires=['pybind11>=2.4'],
-    setup_requires=['pybind11>=2.4'],
+    install_requires=['pybind11>=2.4,<2.10'], # Last supported version of pybind11 for Py2
+    setup_requires=['pybind11>=2.4,<2.10'],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
 )
